@@ -5,6 +5,29 @@ export default class Home extends Component {
         image: require('../assets/civic-black.jpg'),
         color: 'Crystal Black',
     }
+
+    colorList = [{
+        imageCar: require('../assets/civic-black.jpg'),
+        imageChoose: require('../assets/icons/icon-black.jpg'),
+        color: 'Crystal Black',
+        material: 'Pearl'
+    }, {
+        imageCar: require('../assets/civic-steel.jpg'),
+        imageChoose: require('../assets/icons/icon-steel.jpg'),
+        color: 'Modern Steel',
+        material: 'Metallic'
+    }, {
+        imageCar: require('../assets/civic-silver.jpg'),
+        imageChoose: require('../assets/icons/icon-silver.jpg'),
+        color: 'Lunar Silver',
+        material: 'Metallic'
+    }, {
+        imageCar: require('../assets/civic-red.jpg'),
+        imageChoose: require('../assets/icons/icon-red.jpg'),
+        color: 'Rallye Red',
+        material: 'Metallic'
+    }]
+
     information = {
         price: 19550,
         engineType: "In-Line",
@@ -16,7 +39,7 @@ export default class Home extends Component {
 
     renderCar = (imageCar, color) => {
         let newState = {
-            image: imageCar, 
+            image: imageCar,
             color: color
         }
         this.setState(newState);
@@ -74,34 +97,17 @@ export default class Home extends Component {
                             Exterior color
                         </div>
                         <div className='card-body'>
-                            <div className="row border border-link pt-2 pb-2 mt-2" onClick={() => { this.renderCar(require('../assets/civic-black.jpg'), 'Crystal Black')}} style={{ cursor: 'pointer' }}>
-                                <img className="col-2" src={require('../assets/icons/icon-black.jpg')} alt="black_icon" />
-                                <div className="col-10">
-                                    <h3>Crystal Black</h3>
-                                    <p>Pearl</p>
+                            {this.colorList.map((item, index) => {
+                                return <div className="row border border-link pt-2 pb-2 mt-2" onClick={() => { this.renderCar(item.imageCar, item.color) }} style={{ cursor: 'pointer' }}>
+                                    <img className="col-2" src={item.imageChoose} alt="black_icon" />
+                                    <div className="col-10">
+                                        <h3>{item.color}</h3>
+                                        <p>{item.material}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row border border-link pt-2 pb-2 mt-2" onClick={() => { this.renderCar(require('../assets/civic-steel.jpg'), 'Modern Steel') }} style={{ cursor: 'pointer' }}>
-                                <img className="col-2" src={require('../assets/icons/icon-steel.jpg')} alt="black_icon" />
-                                <div className="col-10">
-                                    <h3>Modern Steel</h3>
-                                    <p>Metallic</p>
-                                </div>
-                            </div>
-                            <div className="row border border-link pt-2 pb-2 mt-2" onClick={() => { this.renderCar(require('../assets/civic-silver.jpg'), 'Lunar Silver') }} style={{ cursor: 'pointer' }}>
-                                <img className="col-2" src={require('../assets/icons/icon-silver.jpg')} alt="black_icon" />
-                                <div className="col-10">
-                                    <h3>Lunar Silver</h3>
-                                    <p>Metallic</p>
-                                </div>
-                            </div>
-                            <div className="row border border-link pt-2 pb-2 mt-2" onClick={() => { this.renderCar(require('../assets/civic-red.jpg'), 'Rallye Red') }} style={{ cursor: 'pointer' }}>
-                                <img className="col-2" src={require('../assets/icons/icon-red.jpg')} alt="black_icon" />
-                                <div className="col-10">
-                                    <h3>Rallye Red</h3>
-                                    <p>Metallic</p>
-                                </div>
-                            </div>
+                            })
+
+                            }
                         </div>
                     </div>
                 </div>
